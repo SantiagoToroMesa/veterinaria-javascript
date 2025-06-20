@@ -35,6 +35,25 @@ const listarMascotasPorEdad = () => mascotas.length === 0
             .map(m => `- Nombre: ${m.nombre}, Edad: ${m.edad}, Tipo: ${m.tipo}, Raza: ${m.raza}, Vacunado: ${m.vacunado ? 'Sí' : 'No'}`)
             .join('\n'));
 
+
+const calcularPromedioEdad = () => {
+    if (mascotas.length === 0) {
+        alert("No hay mascotas registradas para calcular el promedio de edad.");
+        return;
+    }
+    const totalEdad = mascotas.reduce((sum, mascota) => sum + mascota.edad, 0);
+    const promedio = totalEdad / mascotas.length;
+    alert(`El promedio de edad de las mascotas es: ${promedio.toFixed(2)} años`);
+}
+const mascotasVacunadas = () => {
+    const vacunadas = mascotas.filter(mascota => mascota.vacunado);
+    if (vacunadas.length === 0) {
+        alert("No hay mascotas vacunadas registradas.");
+    } else {
+        alert("Mascotas vacunadas:\n\n" +
+            vacunadas.map(m => `- Nombre: ${m.nombre}, Edad: ${m.edad}, Tipo: ${m.tipo}, Raza: ${m.raza}`).join('\n'));
+    }
+}
 while (true) {
 let opcion = menu();
 switch (opcion) {
@@ -60,9 +79,11 @@ switch (opcion) {
         }
         break;
     case '3':
+        mascotasVacunadas();
         // Lógica para filtrar mascotas vacunadas
         break;
     case '4':
+        calcularPromedioEdad();
         // Lógica para calcular promedio de edad
         break;
     case '5':
