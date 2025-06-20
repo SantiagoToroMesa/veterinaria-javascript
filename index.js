@@ -8,7 +8,7 @@ let mascotas = [];
 const agregarMascota = (nombre, edad, tipo, raza, vacunado) => {
     let mascota = {
         nombre: nombre,
-        edad: edad,
+        edad: Number(edad),
         tipo: tipo,
         raza: raza,
         vacunado: vacunado
